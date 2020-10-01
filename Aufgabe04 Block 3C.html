@@ -1,19 +1,44 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Aufgabe 04</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
 </head>
+
 <body>
+    <form>
+        <label class="leftbound">Wieviele Schrauben?:</label>
+        <input class="rightbound" name="anzschrauben" type="number" min="0"></input>
+        <br />
+        <label class="leftbound">Wieviele Muttern?:</label>
+        <input class="rightbound" name="anzmuttern" type="number" min="0"></input>
+        <br />
+        <label class="leftbound">Wieviele Unterlegscheiben?:</label>
+        <input class="rightbound" name="anzunterlegscheiben" type="number" min="0"></input>
+        <br />
+        <div class="rightbound">
+            <input type="reset" value="Formular löschen"></input>
+            <input type="button" value="Absenden" onclick="rechner()"></input>
+        </div>
+        <label name="ausgabe">Preis: </label>
+    </form>
+
     <script>
-        for (var key in document) {
-            var element = document[key];
-            document.writeln("")
+        function rechner() {
+            var anzschrauben = document.getElementsByName("anzschrauben")[0].value;
+            var anzmuttern = document.getElementsByName("anzmuttern")[0].value;
+            var anzunterlegscheiben = document.getElementsByName("anzunterlegscheiben")[0].value;
+            var result = anzmuttern * 0.10 + anzschrauben * 0.20 + anzunterlegscheiben * 0.05;
+            result=result.toFixed(2);
+            // result = (Math.round(result * 100) / 100);
+            document.getElementsByName("ausgabe")[0].innerHTML += result + "CHF";
+            return result;
         }
     </script>
 </body>
+
 </html>
